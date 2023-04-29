@@ -754,9 +754,9 @@ def eight_block(buf: BufType, width: int, height: int, level: int = 1, which: Tu
 
 @lru_cache(maxsize=64)
 def distribute_dots(available_space: int, num_of_dots: int) -> Tuple[Tuple[int, ...], int]:
-    dot_size = max(1, available_space // (2 * num_of_dots))
+    dot_size = max(1, available_space // num_of_dots)
     extra = available_space - 2 * num_of_dots * dot_size
-    gaps = list(repeat(dot_size, num_of_dots))
+    gaps = list(repeat(0, num_of_dots))
     if extra > 0:
         idx = 0
         while extra > 0:
