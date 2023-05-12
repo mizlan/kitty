@@ -764,12 +764,18 @@ def braille_dot(buf: BufType, width: int, height: int, col: int, row: int) -> No
 def braille(buf: BufType, width: int, height: int, which: int = 0) -> None:
     if not which:
         return
+    normal_width = round(width / 2)
+    normal_height = round(height / 4)
+    last_width = width - normal_width
+    last_height = height - 3 * normal_height
     for i, x in enumerate(reversed(bin(which)[2:])):
         if x == '1':
             q = i + 1
             col = 0 if q in (1, 2, 3, 7) else 1
             row = 0 if q in (1, 4) else 1 if q in (2, 5) else 2 if q in (3, 6) else 3
-            braille_dot(buf, width, height, col, row)
+            for y in range(0, normal_height if row != 3 else last_height):
+                for x in range(0, normal_width if col != 1 else last_width):
+                    buf[(normal_height * row + y) * width + (normal_width * col) + x] = 255
 
 
 box_chars: Dict[str, List[Callable[[BufType, int, int], Any]]] = {
