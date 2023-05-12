@@ -1,12 +1,8 @@
 = kitty - the fast, feature-rich, cross-platform, GPU based terminal
 
-== before my fork:
-
-image:https://user-images.githubusercontent.com/44309097/235321198-ec70a553-f316-42a6-b0a4-ef37a827b971.png[dot braille]
-
 == after my fork:
 
-image:https://user-images.githubusercontent.com/44309097/235321178-ebeda74b-a8f8-489f-9fd8-4805477b6071.png[box braille]
+image:https://user-images.githubusercontent.com/44309097/238046471-f2c189eb-d759-491f-893e-789219fbfc58.png[box braille]
 
 
 See https://sw.kovidgoyal.net/kitty/[the kitty website].
