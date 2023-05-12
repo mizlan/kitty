@@ -117,7 +117,13 @@ class ColorFormatter:
 
     def __getattr__(self, name: str) -> str:
         q = name
-        if q == 'default':
+        which = int(self.which)
+        if name.startswith('__'):
+            ans = int(name[2:])
+            if ans >= 8:
+                which += 5
+                ans -= 8
+        elif q == 'default':
             ans = '9'
         elif q == 'tab':
             col = color_from_int((self.draw_data.tab_bg if self.which == '4' else self.draw_data.tab_fg)(self.tab_data))
@@ -129,7 +135,7 @@ class ColorFormatter:
             if c is None:
                 raise AttributeError(f'{name} is not a valid color')
             ans = f'8{color_as_sgr(c)}'
-        return f'\x1b[{self.which}{ans}m'
+        return f'\x1b[{which}{ans}m'
 
 
 class Formatter:
