@@ -2379,6 +2379,7 @@ class Boss:
             t = tm.active_tab
             if t is not None:
                 t.relayout_borders()
+            tm.apply_options()
         patch_global_colors(spec, configured)
 
     def apply_new_options(self, opts: Options) -> None:
